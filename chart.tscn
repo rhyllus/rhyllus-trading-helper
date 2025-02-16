@@ -1,0 +1,402 @@
+[gd_scene load_steps=10 format=3 uid="uid://flbxee1nac20"]
+
+[ext_resource type="Script" path="res://chart.gd" id="1_8uqjm"]
+[ext_resource type="FontFile" uid="uid://cly8osahe7e2m" path="res://AnonymousPro-Regular.ttf" id="2_ujyo6"]
+[ext_resource type="Script" path="res://camera_scroll.gd" id="2_vbaxv"]
+[ext_resource type="Script" path="res://current_time.gd" id="3_4vtgl"]
+[ext_resource type="PackedScene" uid="uid://bt253jttytro1" path="res://current_candle.tscn" id="4_0blql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5dwc"]
+size = Vector2(10, 700)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d18gj"]
+font = ExtResource("2_ujyo6")
+font_size = 25
+shadow_size = 0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4y2aq"]
+a = Vector2(-3000, 0)
+b = Vector2(-220, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_2h0bn"]
+a = Vector2(3000, 0)
+b = Vector2(260, 0)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8uqjm")
+
+[node name="HistoricalDataReq" type="HTTPRequest" parent="."]
+
+[node name="Realtime" parent="." instance=ExtResource("4_0blql")]
+
+[node name="Camera2D" type="Camera2D" parent="Realtime"]
+script = ExtResource("2_vbaxv")
+
+[node name="Area2D" type="Area2D" parent="Realtime/Camera2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Realtime/Camera2D/Area2D"]
+shape = SubResource("RectangleShape2D_m5dwc")
+
+[node name="Time" type="Node2D" parent="Realtime/Camera2D"]
+
+[node name="LabelPivot" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(0, 291)
+
+[node name="Time" type="Label" parent="Realtime/Camera2D/Time/LabelPivot"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot2" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-150, 291)
+
+[node name="Time-1" type="Label" parent="Realtime/Camera2D/Time/LabelPivot2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -5
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Realtime/Camera2D/Time/LabelPivot2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Realtime/Camera2D/Time/LabelPivot2/Area2D"]
+position = Vector2(-80, 0)
+shape = SubResource("SegmentShape2D_4y2aq")
+
+[node name="LabelPivot3" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-300, 291)
+
+[node name="Time-2" type="Label" parent="Realtime/Camera2D/Time/LabelPivot3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -10
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot4" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-450, 291)
+
+[node name="Time-3" type="Label" parent="Realtime/Camera2D/Time/LabelPivot4"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -15
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot5" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-600, 291)
+
+[node name="Time-4" type="Label" parent="Realtime/Camera2D/Time/LabelPivot5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -20
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot11" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-750, 291)
+
+[node name="Time-5" type="Label" parent="Realtime/Camera2D/Time/LabelPivot11"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -25
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot12" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-900, 291)
+
+[node name="Time-6" type="Label" parent="Realtime/Camera2D/Time/LabelPivot12"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -30
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot14" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(-1050, 291)
+
+[node name="Time-7" type="Label" parent="Realtime/Camera2D/Time/LabelPivot14"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = -35
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot6" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(150, 291)
+
+[node name="Time1" type="Label" parent="Realtime/Camera2D/Time/LabelPivot6"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Realtime/Camera2D/Time/LabelPivot6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Realtime/Camera2D/Time/LabelPivot6/Area2D"]
+position = Vector2(40, 0)
+shape = SubResource("SegmentShape2D_2h0bn")
+
+[node name="LabelPivot7" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(300, 291)
+
+[node name="Time2" type="Label" parent="Realtime/Camera2D/Time/LabelPivot7"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot8" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(450, 291)
+
+[node name="Time3" type="Label" parent="Realtime/Camera2D/Time/LabelPivot8"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="LabelPivot9" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(600, 291)
+
+[node name="Time4" type="Label" parent="Realtime/Camera2D/Time/LabelPivot9"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 20
+
+[node name="LabelPivot10" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(750, 291)
+
+[node name="Time5" type="Label" parent="Realtime/Camera2D/Time/LabelPivot10"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 25
+
+[node name="LabelPivot13" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(900, 291)
+
+[node name="Time6" type="Label" parent="Realtime/Camera2D/Time/LabelPivot13"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 30
+
+[node name="LabelPivot15" type="Node2D" parent="Realtime/Camera2D/Time"]
+position = Vector2(1050, 291)
+
+[node name="Time7" type="Label" parent="Realtime/Camera2D/Time/LabelPivot15"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -13.0
+offset_right = 34.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "12:00"
+label_settings = SubResource("LabelSettings_d18gj")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_4vtgl")
+time_offset = 30
+
+[node name="Historical" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="request_completed" from="HistoricalDataReq" to="." method="_on_historical_data_req_request_completed"]
+[connection signal="area_entered" from="Realtime/Camera2D/Time/LabelPivot2/Area2D" to="Realtime/Camera2D/Time" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Realtime/Camera2D/Time/LabelPivot6/Area2D" to="Realtime/Camera2D/Time" method="_on_area_2d_area_entered_right"]

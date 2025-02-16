@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://fmrkonwf4y56"]
+
+[ext_resource type="Script" path="res://static_candle.gd" id="1_uqyew"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6elvv"]
+a = Vector2(-2, -50)
+b = Vector2(2, 50)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_uqyew")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_6elvv")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
