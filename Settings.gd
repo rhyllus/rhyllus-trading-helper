@@ -9,3 +9,4 @@ var interval : int = intervals.m1
 var interpolation_speed : float = 16
 var scroll_intertia : float = 8
 var camera_snap : float = 4
+var chart_scroll : float = 6

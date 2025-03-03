@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 Settings="*res://Settings.gd"
 GlobalVariables="*res://GlobalVariables.gd"
 
-[rendering]
+[editor]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+movie_writer/movie_file="/home/rhyllus/Видео/movie.avi"

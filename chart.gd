@@ -10,6 +10,9 @@ var timestamp : int = 0
 var first_draw : bool = true
 var historical_data : Array
 var URL : String
+var historical_X_destination : float = 0
+var candle_clone : Array
+var clone_index : int = 0
 # Number of historical candles to be drawn
 @export var depth : int = 100  
 
@@ -38,11 +41,19 @@ func candle_instance(candle_data: Array, index: int) -> void:
 func _ready() -> void:
 	get_data()
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if (historical_candle_root.position.x != historical_X_destination):
+		historical_candle_root.position.x = lerpf(historical_candle_root.position.x, historical_X_destination, delta * Settings.chart_scroll)
 	if (timestamp != 0 && (timestamp != timestamp_source.open_time)):
 		timestamp = timestamp_source.open_time
-		clear_instance()
-		get_data()
+		var new_y_offset : float = -(candle_clone[4] - candle_clone[1])
+		GlobalVariables.total_height = new_y_offset
+		timestamp_source.position.y = new_y_offset
+		candle_instance(candle_clone, clone_index)
+		clone_index -= 1
+		historical_X_destination = historical_candle_root.position.x - 30
+	else:
+		candle_clone = [0, timestamp_source.candle_floor, timestamp_source.upper_shadow, timestamp_source.lower_shadow, timestamp_source.price]
 	timestamp = timestamp_source.open_time
 
 # Only run once after data is received, not in _process
